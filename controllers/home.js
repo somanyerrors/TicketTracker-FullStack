@@ -5,7 +5,7 @@ module.exports = {
         try {
             const tickets = await
             TicketList.find()
-            res.render("index.ejs", { TicketList: tickets });
+            res.render("index.ejs", { ticketList: tickets });
         } catch (err) {
             if (err) return res.status(500).send(err);
         }
@@ -13,7 +13,6 @@ module.exports = {
     createTicket: async (req, res) => {
         const newTicket = new TicketList(
             {
-                // Make sure field names match
                 subject: req.body.subject,
                 description: req.body.description,
                 severity: req.body.severity,
